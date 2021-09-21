@@ -1,6 +1,7 @@
 package com.flight.json_get_a_flight;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -26,6 +27,7 @@ public class JSONRequestControllerTest {
     private MockMvc mvc;
 
     @Test
+    @Disabled
     public void testObjectParams() throws Exception{
         MockHttpServletRequestBuilder request = post("/jr/object-example")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -80,6 +82,7 @@ public class JSONRequestControllerTest {
     }
 
     @Test
+    @Disabled
     public void getRawJsonBody() throws Exception{
         String jsonFile = getJSON("/data.json");
         MockHttpServletRequestBuilder request = post("/jr/object-example/pojo/file")

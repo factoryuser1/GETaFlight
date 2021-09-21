@@ -115,21 +115,23 @@ public class FlightControllerTest {
     }
     @Test
     public void postJsonToFlightsTicketCalculatesSumOfTicketPricesWithFileReader() throws Exception{
-        String jsonFile = getJSON("/Users/a2186586/IdeaProjects/Spring/ben.json");
+        String jsonFile = getJSON("/ben.json");
         MockHttpServletRequestBuilder request = post("/flights/tickets/total")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonFile);
 
         this.mvc.perform(request)
                 .andExpect(status().isOk())
-                .andExpect(content().string(jsonFile));
+                .andExpect(content().string("{" +
+                        "\"result\":350" +
+                        "}"));
     }
 
 
     //Helper internal Method
     private String getJSON(String path) throws Exception{
 
-//        URL url = this.getClass().getResource(path);
-        return new String(Files.readAllBytes(Paths.get(path)));
+        URL url = this.getClass().getResource(path);
+        return new String(Files.readAllBytes(Paths.get(url.getFile())));
     }
 }

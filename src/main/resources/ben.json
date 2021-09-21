@@ -1,0 +1,18 @@
+{
+  "tickets": [
+    {
+      "Passenger": {
+        "FirstName": "Some name",
+        "LastName": "Some other name"
+      },
+      "Price": 200
+    },
+    {
+      "Passenger": {
+        "FirstName": "Name B",
+        "LastName": "Name C"
+      },
+      "Price": 150
+    }
+  ]
+}
