@@ -1,8 +1,6 @@
 package com.flight.json_get_a_flight;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -13,7 +11,7 @@ import java.util.*;
 public class FlightController {
 
     @GetMapping("/flight")
-    public Flight getFlight(){
+    public Flight getFlight() {
         Flight flight = new Flight();
         Ticket ticket = new Ticket();
         Person person1 = new Person();
@@ -68,4 +66,16 @@ public class FlightController {
         return flightList;
     }
 
+    @PostMapping("/tickets/total")
+    public Map<String, Integer> postCalculateTicketPrices(@RequestBody TicketList tickets) {
+        int totalPrice = 0;
+        HashMap<String, Integer> result = new HashMap<>();
+
+        for (Ticket ticket : tickets.getTickets()) {
+            totalPrice += ticket.getPrice();
+        }
+        result.put("result", totalPrice);
+
+        return result;
+    }
 }

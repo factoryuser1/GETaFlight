@@ -10,6 +10,13 @@ public class Ticket {
     @JsonProperty("Price")
     private int price;
 
+    public Ticket() {}
+
+    public Ticket(Person passenger, int price) {
+        this.passenger = passenger;
+        this.price = price;
+    }
+
     public int getPrice() {
         return price;
     }
